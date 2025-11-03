@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     boton: {
-        backgroundColor: "red",
+        backgroundColor: "#e286efff",
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: "center",
