@@ -66,7 +66,7 @@ class Register extends Component {
                 </Pressable>
                 
                 <Pressable
-                    onPress={() => props.navigation.navigate("Login")}>
+                    onPress={() => this.props.navigation.navigate("Login")}>
                     <Text> Ya tengo cuenta </Text>
                 </Pressable>
             </View>
