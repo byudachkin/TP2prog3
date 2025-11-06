@@ -10,7 +10,16 @@ class Register extends Component {
             email: "",
             username: "",
             password: "",
+            error: "",
         }
+    }
+
+    componentDidMount(){
+        auth.onAuthStateChanged(user => {
+            if(user!= null){
+                this.props.navigation.navigate("HomeMenu")
+            }
+        })
     }
 
       onSubmit(email, password, username) {
@@ -33,7 +42,7 @@ class Register extends Component {
     .catch( error => { 
         console.log(error);
         
-        this.setState({error: "Fallo en el registro"})
+        this.setState({error: error.message})
     })
   };
 
@@ -65,6 +74,8 @@ class Register extends Component {
                     <Text style={styles.texto}> Registrate </Text>
                 </Pressable>
                 
+                <Text> {this.state.error}</Text>
+
                 <Pressable
                     onPress={() => this.props.navigation.navigate("Login")}>
                     <Text> Ya tengo cuenta </Text>

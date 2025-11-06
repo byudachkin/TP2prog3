@@ -35,7 +35,8 @@ class Nuevopost extends Component {
                             email: auth.currentUser.email,
                             descripcion: this.state.descripcion,
                             createdAt: Date.now(),
-                            likes: []
+                            likes: [],
+                            comentarios: [],
                         })
                 .then( r => console.log(r)) 
                 .catch( e => console.log(e))

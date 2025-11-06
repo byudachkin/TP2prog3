@@ -25,7 +25,7 @@ class Post extends Component {
             })
         }
   
-
+       
 
     render(){
         console.log(this.props)
@@ -36,6 +36,9 @@ class Post extends Component {
       {<Text> likes:{this.props.data.data.likes.length}</Text> }
       <Pressable onPress={() => this.likear()}>
         <Text > 💗  </Text>
+        </Pressable>
+        <Pressable onPress={() => this.props.navegar(this.props.data.id)}>
+        <Text > Comentar  </Text>
         </Pressable>
     </View>
   );

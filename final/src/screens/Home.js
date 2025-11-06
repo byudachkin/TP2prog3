@@ -26,6 +26,11 @@ componentDidMount() {
   });
 }
 
+navegar(id){
+  console.log(this.props.navigation)
+  this.props.navigation.navigate("NavegacionComentarios" , {screen: "Comentario" , params:{id: id}} )
+}
+
   render() {
     return (
       <View>
@@ -33,7 +38,7 @@ componentDidMount() {
         <FlatList
           data={this.state.posteos}
           keyExtractor={ item => item.id}
-          renderItem={({ item }) =>  <Post data={item}/>
+          renderItem={({ item }) =>  <Post data={item} navegar={(id) => this.navegar(id)}/>
           }
         />
       </View>

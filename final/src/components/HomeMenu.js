@@ -7,6 +7,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Nuevopost from "../screens/Nuevopost";
+import NavegacionComentarios from "./NavegacionComentarios";
 
 
 const Tab = createBottomTabNavigator();
@@ -14,7 +15,7 @@ const Tab = createBottomTabNavigator();
 function HomeMenu() {
     return(
             <Tab.Navigator screenOptions={ { tabBarShowLabel: false } }>
-                <Tab.Screen name="Home" component={ Home } options={
+                <Tab.Screen name="NavegacionComentarios" component={ NavegacionComentarios } options={
                     {tabBarIcon: () => <Entypo name="home" size={24} color="black" />}
                 }/>
                 {/* <Tab.Screen name="Profile" component={ Profile }  options={
