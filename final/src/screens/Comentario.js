@@ -58,7 +58,7 @@ class Comentario extends Component {
           onChangeText={text => this.setState({ textoinput: text })}
         />
         <Pressable style={styles.boton} onPress={() => this.crearComentario()}>
-          <Text style={styles.texto} > Publicar post </Text>
+          <Text style={styles.texto} > Publicar comentario </Text>
         </Pressable>
         <Pressable style={styles.botonHome} onPress={() => this.props.navigation.navigate('Home')}>
           <Text style={styles.texto} > Volver a home  </Text>
