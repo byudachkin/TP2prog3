@@ -31,39 +31,95 @@ class Comentario extends Component {
 
   render() {
     return (
-      <View>
-        <Text >Comentarios</Text>
+      <View style={styles.contenedor}>
+        <Text style={styles.titulo}>Comentarios</Text>
         {this.state.loadingPosteo ? null :
           <View >
             <Text >{this.state.posteo.email}</Text>
             <Text>{this.state.posteo.descripcion}</Text>
             {<Text> likes:{this.state.posteo.likes.length}</Text>}
 
-            <FlatList data={this.state.posteo.comentarios} keyExtractor={() => Math.random()} renderItem={({ item }) => {
+            <FlatList style={styles.cadaComentario} data={this.state.posteo.comentarios} keyExtractor={() => Math.random()} renderItem={({ item }) => {
               console.log(item)
-              return(
+              return (
                 <View>
-                <Text> {item.email} </Text>
-                <Text> {item.comentario} </Text>
-              </View>
+                  <Text> {item.email} </Text>
+                  <Text> {item.comentario} </Text>
+                </View>
               )
-              
+
             }} />
           </View>
         }
 
-        <TextInput
-          placeholder="Escribí aqui tu comnetario..."
+        <TextInput style={styles.field}
+          placeholder="Comenta aquí tu post..."
           value={this.state.textoinput}
           onChangeText={text => this.setState({ textoinput: text })}
         />
-        <Pressable onPress={() => this.crearComentario()}>
-          <Text > Publicar post </Text>
+        <Pressable style={styles.boton} onPress={() => this.crearComentario()}>
+          <Text style={styles.texto} > Publicar post </Text>
+        </Pressable>
+        <Pressable style={styles.botonHome} onPress={() => this.props.navigation.navigate('Home')}>
+          <Text style={styles.texto} > Volver a home  </Text>
         </Pressable>
 
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  contenedor: {
+    paddingHorizontal: 10,
+    marginTop: 20,
+  },
+  cadaComentario: {
+    paddingHorizontal: 10,
+    marginHorizontal: 16,
+    marginTop: 16,
+    padding: 14,
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  field: {
+    height: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 6,
+    borderColor: "#ccc",
+    borderStyle: "solid",
+    borderWidth: 1,
+    marginVertical: 10
+  },
+  boton: {
+    backgroundColor: "#e286efff",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    textAlign: "center",
+    borderRadius: 4,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#28a745"
+  },
+  botonHome: {
+    backgroundColor: "pink",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    textAlign: "center",
+    borderRadius: 4,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#28a745"
+  },
+  texto: {
+    color: "#fff"
+  },
+  titulo: {
+    fontWeight: "bold"
+  }
+})
 
 export default Comentario;

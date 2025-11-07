@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 
 function HomeMenu() {
     return(
-            <Tab.Navigator screenOptions={ { tabBarShowLabel: false } }>
+            <Tab.Navigator screenOptions={ { headerShown: false, tabBarShowLabel: false } }>
                 <Tab.Screen name="NavegacionComentarios" component={ NavegacionComentarios } options={
                     {tabBarIcon: () => <Entypo name="home" size={24} color="black" />}
                 }/>
