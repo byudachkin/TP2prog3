@@ -33,7 +33,7 @@ navegar(id){
 
   render() {
     return (
-      <View>
+      <View style={styles.contenedor}>
         <Text style={styles.texto}>HOME</Text>
         <FlatList
           data={this.state.posteos}
@@ -48,8 +48,14 @@ navegar(id){
 
 const styles = StyleSheet.create({
     texto: {
-         fontWeight: "bold"
+         fontWeight: "bold",
+         textAlign: "center",
+         marginTop: 10
     },
+    contenedor: {
+      width: "100%",
+      flex: 1
+    }
 })
 
 export default Home

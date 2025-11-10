@@ -39,10 +39,10 @@ class Comentario extends Component {
             <Text>{this.state.posteo.descripcion}</Text>
             {<Text> likes:{this.state.posteo.likes.length}</Text>}
 
-            <FlatList style={styles.cadaComentario} data={this.state.posteo.comentarios} keyExtractor={() => Math.random()} renderItem={({ item }) => {
+            <FlatList style={styles.cadaComentario} data={this.state.posteo.comentarios} keyExtractor={item => Math.random()} renderItem={({ item }) => {
               console.log(item)
               return (
-                <View>
+                <View style={styles.comentar}>
                   <Text> {item.email} </Text>
                   <Text> {item.comentario} </Text>
                 </View>
@@ -112,13 +112,21 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     borderStyle: "solid",
-    borderColor: "#28a745"
+    borderColor: "#28a745",
+    marginTop: 10
   },
   texto: {
     color: "#fff"
   },
   titulo: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+  },
+  comentar: {
+    borderWidth: 1,
+    borderColor: "grey",
+    margin: 4,
+    borderRadius: 8,
+    backgroundColor: "#e6e2e2ff"
   }
 })
 

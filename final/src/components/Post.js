@@ -46,9 +46,8 @@ class Post extends Component {
             <View style={styles.contenedor}>
                 <Text >{this.props.data.data.email}</Text>
                 <Text>{this.props.data.data.descripcion}</Text>
-                {<Text> likes:{this.props.data.data.likes.length}</Text>}
                 <Pressable onPress={() => this.likear()}>
-                    <Text >  { this.state.likeado ? "💗" : "🖤" } </Text>
+                    <Text >  {this.props.data.data.likes.length}{ this.state.likeado ? "💗" : "🖤" } </Text>
                 </Pressable>
                 <Pressable style={styles.boton} onPress={() => this.props.navegar(this.props.data.id)}>
                     <Text style={styles.texto}> Comentar  </Text>

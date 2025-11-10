@@ -64,8 +64,8 @@ class Login extends Component {
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text })}
                     value={this.state.password} />
-                <Pressable style={styles.boton} onPress={() => this.onSubmit(this.state.email, this.state.password)}>
                     <Text> {this.state.error}</Text>
+                <Pressable style={styles.boton} onPress={() => this.onSubmit(this.state.email, this.state.password)}>
                     <Text style={styles.texto}> Logueate </Text>
                 </Pressable>
 

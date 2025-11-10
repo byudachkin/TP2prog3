@@ -7,7 +7,8 @@ class Profile extends Component {
     super(props);
     this.state = {
       posts: [],
-      loading: true
+      loading: true,
+      usuario: ""
     };
   }
 
@@ -27,6 +28,21 @@ class Profile extends Component {
           loading: false
         });
       });
+       db.collection("users").where("email", "==", auth.currentUser.email).onSnapshot(
+        docs => {
+        let usuarios = [];
+        docs.forEach(doc => {
+          usuarios.push({
+            id: doc.id,
+            data: doc.data()
+          });
+        });
+
+        this.setState({
+          usuario: usuarios[0].data,
+          loading: false
+        });
+      });
   }
 
   logout() {
@@ -40,6 +56,7 @@ class Profile extends Component {
     return (
       <View style={styles.contenedor}>
         <Text style={styles.titulo}>Mi Perfil</Text>
+         <Text>Usuario: {this.state.usuario.name}</Text>
         <Text>Email: {auth.currentUser.email}</Text>
         <Text >Mis publicaciones:</Text>
         <FlatList style={styles.publicacion} data={this.state.posts} keyExtractor={item => item.id.toString()} renderItem={({ item }) => ( <Text>• {item.data.descripcion}</Text>)}/>
@@ -88,6 +105,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         borderWidth: 1,
         borderColor: '#e5e7eb',
+        marginBottom: 10
     }
 
 })
