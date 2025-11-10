@@ -41,9 +41,16 @@ class Register extends Component {
     })
     .catch( error => { 
         console.log(error);
-        
-        this.setState({error: error.message})
-    })
+        if (error.message == "The email address is badly formatted.") {
+            this.setState({error: "El correo esta mal formateado."})
+        }
+        else if (error.message == "Password should be at least 6 characters") {
+            this.setState({error: "La contraseña debe tener al menos 6 caracteres"})
+        }
+        else if (error.message == "The email address is already in use by another account.") {
+            this.setState({error: "Este email ya esta logueado"})
+        }
+       })
   };
 
     render() {
