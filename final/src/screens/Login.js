@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { View, Text, Pressable, StyleSheet, TextInput } from "react-native";
+import { View, Text, Pressable, StyleSheet, TextInput, Image } from "react-native";
 import { auth } from "../firebase/config";
 
 
@@ -48,6 +48,9 @@ class Login extends Component {
                 </Pressable>
 
                 <Text style={styles.titulo}> Login</Text>
+                <Image style={styles.image}
+                       source={require("../../assets/logo.png")}
+                       resizeMode="contain"/>
                 <Text> Email</Text>
                 <TextInput style={styles.field}
                     keyboardType="email-address"
@@ -78,8 +81,13 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
     contenedor: {
-        paddingHorizontal: 10,
-        marginTop: 20
+  
+        marginTop: 20,
+        flex: 1,               
+  justifyContent: "center",
+  alignItems: "center",   
+  backgroundColor: "#F6F7FB", 
+  paddingHorizontal: 24,
     },
     field: {
         height: 20,
@@ -93,7 +101,7 @@ const styles = StyleSheet.create({
     },
     boton: {
         backgroundColor: "#e286efff",
-        paddingHorizontal: 10,
+        paddingHorizontal: 3,
         paddingVertical: 6,
         textAlign: "center",
         borderRadius: 4,
@@ -110,6 +118,20 @@ const styles = StyleSheet.create({
     register: {
         fontWeight: "bold"
     },
+    image: {
+       width: 120,
+  height: 120,
+  borderRadius: 60,      
+  borderWidth: 3,          
+  borderColor: '#e286ef',  
+  marginBottom: 20,
+  backgroundColor: '#fff',
+  shadowColor: '#000',    
+  shadowOpacity: 0.15,
+  shadowOffset: { width: 0, height: 4 },
+  shadowRadius: 8,
+  elevation: 4,     
+    }
 })
 
 
