@@ -8,7 +8,15 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
+        likeado: false
 
+        }
+    }
+
+    componentDidMount(){
+        console.log(this.props.data.data)
+        if (this.props.data.data.likes.includes(auth.currentUser.email)){
+            this.setState({likeado:true})
         }
     }
 
@@ -16,11 +24,16 @@ class Post extends Component {
         db.collection("posts")
             .doc(this.props.data.id)
             .update({
-                likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+                likes: this.state.likeado ? firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email) : firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
             })
             .then((r) => {
                 console.log(r);
-
+                if (this.state.likeado){
+                    this.setState({likeado:false})
+                }
+                else{
+                    this.setState({likeado:true})
+                }
 
             })
     }
@@ -35,7 +48,7 @@ class Post extends Component {
                 <Text>{this.props.data.data.descripcion}</Text>
                 {<Text> likes:{this.props.data.data.likes.length}</Text>}
                 <Pressable onPress={() => this.likear()}>
-                    <Text > 💗  </Text>
+                    <Text >  { this.state.likeado ? "💗" : "🖤" } </Text>
                 </Pressable>
                 <Pressable style={styles.boton} onPress={() => this.props.navegar(this.props.data.id)}>
                     <Text style={styles.texto}> Comentar  </Text>
