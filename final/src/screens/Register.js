@@ -25,6 +25,9 @@ class Register extends Component {
     onSubmit(email, password, username) {
         console.log(this.state);
 
+        if (username !== "") {
+            
+
         auth.createUserWithEmailAndPassword(email, password)
             .then(response => {
                 console.log(response);
@@ -50,11 +53,12 @@ class Register extends Component {
                 else if (error.message == "The email address is already in use by another account.") {
                     this.setState({ error: "Este email ya esta logueado" })
                 }
-                else if (username == "") {
-                    this.setState({ error: "El usuario no debe estar vacio" })
-                }
+                
             })
-    };
+    }else {
+        this.setState({ error: "El usuario no debe estar vacio" })
+    }
+};
 
     render() {
         return (
@@ -83,7 +87,7 @@ class Register extends Component {
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text })}
                     value={this.state.password} />
-                <Pressable style={styles.boton} onPress={() => this.onSubmit(this.state.email, this.state.password)}>
+                <Pressable style={styles.boton} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.username)}>
                     <Text style={styles.texto}> Registrate </Text>
                 </Pressable>
 
