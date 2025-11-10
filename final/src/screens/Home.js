@@ -34,7 +34,7 @@ navegar(id){
   render() {
     return (
       <View>
-        <Text >HOME PAGE</Text>
+        <Text style={styles.texto}>HOME</Text>
         <FlatList
           data={this.state.posteos}
           keyExtractor={ item => item.id}
@@ -47,7 +47,7 @@ navegar(id){
 }
 
 const styles = StyleSheet.create({
-    titulo: {
+    texto: {
          fontWeight: "bold"
     },
 })
